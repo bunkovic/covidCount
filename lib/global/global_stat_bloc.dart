@@ -18,12 +18,12 @@ class GlobalStatBloc extends Bloc<GlobalStatEvent, GlobalStatState> {
   @override
   Stream<GlobalStatState> mapEventToState(GlobalStatEvent event) async* {
     //ignore the event
-    yield* getGlobalStats();
+    yield* _getGlobalStats();
   }
 
-  Stream<GlobalStatState> getGlobalStats() async* {
-    yield GlobalStatLoading();
+  Stream<GlobalStatState> _getGlobalStats() async* {
     try {
+      yield GlobalStatLoading();
       final globalStats = await restClient.getGlobalStats();
       yield GlobalStatPopulated(globalStats);
     } catch (e) {

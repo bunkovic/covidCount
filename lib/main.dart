@@ -1,4 +1,5 @@
 import 'package:covidcount/global/global_stat_bloc.dart';
+import 'package:covidcount/country_list_screen.dart';
 import 'package:covidcount/global/global_stat_display.dart';
 import 'package:covidcount/global/global_stat_event.dart';
 import 'package:covidcount/global/global_stat_screen.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Covid Count',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
       ),
       home: MyHomePage(title: 'Covid Count'),
     );
@@ -28,16 +29,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -46,6 +37,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   GlobalStatBloc _bloc;
+  int _currentIndex = 0;
+
+  List<Widget> _screens = <Widget>[
+    GlobalStatScreen(),
+    CountryListScreen(),
+  ];
 
   @override
   void initState() {
@@ -56,17 +53,48 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<GlobalStatBloc>(
-      create: (_) => _bloc,
+    return DefaultTabController(
+      length: _screens.length,
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Center(
-            child: GlobalStatScreen()
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: _selectBottomItem,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.public), title: Text("Global cases")),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              title: Text("Countries"),
+            )
+          ],
         ),
-
+        body: BlocProvider<GlobalStatBloc>(
+          create: (_) => _bloc,
+          child: PageView(
+            controller: pageController,
+            onPageChanged: _onPageChanged,
+            children: _screens,
+          ),
+        ),
       ),
     );
+  }
+
+  PageController pageController = PageController(
+    initialPage: 0,
+    keepPage: true,
+  );
+
+  void _selectBottomItem(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  void _onPageChanged(int pageIndex) {
+    _selectBottomItem(pageIndex);
   }
 }
