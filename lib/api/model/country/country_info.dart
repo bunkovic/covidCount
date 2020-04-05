@@ -16,9 +16,9 @@ class CountryInfoBean {
   @JsonKey(name: "country")
   final String country;
   @JsonKey(name: "lat")
-  final int lat;
+  final double lat;
   @JsonKey(name: "long")
-  final int long;
+  final double long;
   @JsonKey(name: "flag")
   final String flag;
 

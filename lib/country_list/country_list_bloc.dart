@@ -10,7 +10,7 @@ class CountryListBloc extends Bloc<CountryListEvent, CountryListState>{
   RestClient _restClient = serviceLocator.get();
 
   @override
-  CountryListState get initialState => CountryListSuccess();
+  CountryListState get initialState => CountryListLoading();
 
   @override
   Stream<CountryListState> mapEventToState(CountryListEvent event) async*{
@@ -22,8 +22,8 @@ class CountryListBloc extends Bloc<CountryListEvent, CountryListState>{
   Stream<CountryListState> _getAll() async* {
     yield CountryListLoading();
     try {
-      var countryData = await _restClient.getCountryData();
-      yield CountryListSuccess();
+      var countryDataList = await _restClient.getCountryData();
+      yield CountryListSuccess(countryDataList);
     } catch (e){
       yield CountryListError();
     }

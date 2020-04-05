@@ -12,8 +12,8 @@ CountryInfoBean _$CountryInfoBeanFromJson(Map<String, dynamic> json) {
     json['iso2'] as String,
     json['iso3'] as String,
     json['country'] as String,
-    json['lat'] as int,
-    json['long'] as int,
+    (json['lat'] as num)?.toDouble(),
+    (json['long'] as num)?.toDouble(),
     json['flag'] as String,
   );
 }

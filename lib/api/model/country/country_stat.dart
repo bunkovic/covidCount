@@ -17,8 +17,8 @@ class CountryStat {
   final int recovered;
   final int active;
   final int critical;
-  final int casesPerOneMillion;
-  final int deathsPerOneMillion;
+  final double casesPerOneMillion;
+  final double deathsPerOneMillion;
   final int updated;
 
   CountryStat(this.country, this.countryInfo, this.cases, this.todayCases,

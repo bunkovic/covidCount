@@ -19,8 +19,8 @@ CountryStat _$CountryStatFromJson(Map<String, dynamic> json) {
     json['recovered'] as int,
     json['active'] as int,
     json['critical'] as int,
-    json['casesPerOneMillion'] as int,
-    json['deathsPerOneMillion'] as int,
+    (json['casesPerOneMillion'] as num)?.toDouble(),
+    (json['deathsPerOneMillion'] as num)?.toDouble(),
     json['updated'] as int,
   );
 }
