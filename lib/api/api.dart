@@ -1,3 +1,4 @@
+import 'package:covid_count/api/model/country/country_stat.dart';
 import 'package:covid_count/api/model/global_stats_entity.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
@@ -12,8 +13,8 @@ abstract class RestClient {
   @GET("/all")
   Future<GlobalStats> fetchGlobalData();
 
-//  @GET("/countries")
-//  Future<List<CountryData>> getCountryData();
+  @GET("/countries")
+  Future<List<CountryStat>> getCountryData();
 
 }
 

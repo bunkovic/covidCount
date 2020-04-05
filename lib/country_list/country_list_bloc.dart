@@ -22,8 +22,8 @@ class CountryListBloc extends Bloc<CountryListEvent, CountryListState>{
   Stream<CountryListState> _getAll() async* {
     yield CountryListLoading();
     try {
-//      var countryData = await _restClient.getCountryData();
-//      yield CountryListSuccess(countryData);
+      var countryData = await _restClient.getCountryData();
+      yield CountryListSuccess();
     } catch (e){
       yield CountryListError();
     }

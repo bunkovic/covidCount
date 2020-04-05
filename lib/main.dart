@@ -39,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   GlobalStatBloc _globalStatBloc;
-//  CountryListBloc _countryListBloc;
+  CountryListBloc _countryListBloc;
   int _currentIndex = 0;
 
   List<Widget> _screens = <Widget>[
@@ -52,8 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _globalStatBloc = GlobalStatBloc();
     _globalStatBloc.add(LoadGlobalStats());
-//    _countryListBloc = CountryListBloc();
-//    _countryListBloc.add(LoadCountryList());
+    _countryListBloc = CountryListBloc();
+    _countryListBloc.add(LoadCountryList());
   }
 
   @override
@@ -67,7 +67,9 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _selectBottomItem,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.public), title: Text("Global cases")),
+            icon: Icon(Icons.public),
+            title: Text("Global cases"),
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
             title: Text("Countries"),
@@ -79,9 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
           BlocProvider<GlobalStatBloc>(
             create: (_) => _globalStatBloc,
           ),
-//            BlocProvider<CountryListBloc>(
-//              create: (_) => _countryListBloc,
-//            )
+          BlocProvider<CountryListBloc>(
+            create: (_) => _countryListBloc,
+          )
         ],
         child: PageView(
           controller: pageController,
@@ -100,10 +102,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void _selectBottomItem(int index) {
     setState(() {
       _currentIndex = index;
-      pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.decelerate);
+      pageController.animateToPage(index,
+          duration: Duration(milliseconds: 500), curve: Curves.decelerate);
     });
-
-
   }
 
   void _onPageChanged(int pageIndex) {
