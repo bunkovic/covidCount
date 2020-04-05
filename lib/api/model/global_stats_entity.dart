@@ -21,14 +21,3 @@ class GlobalStats {
   Map<String, dynamic> toJson() => _$GlobalStatsToJson(this);
 
 }
-
-
-
-//{
-//"cases": 1121917,
-//"deaths": 59401,
-//"recovered": 230316,
-//"updated": 1585991727268,
-//"active": 832200,
-//"affectedCountries": 208
-//}

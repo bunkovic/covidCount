@@ -1,4 +1,4 @@
-import 'package:covidcount/api/model/global_stats_entity.dart';
+import 'package:covid_count/api/model/global_stats_entity.dart';
 import 'package:flutter/material.dart';
 
 class GlobalStatDisplay extends StatelessWidget {

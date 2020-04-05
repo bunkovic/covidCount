@@ -1,5 +1,6 @@
-name: covidcount
+name: covid_count
 description: Flutter project made to track covid cases.
+author: Piotr Kaźmierczak <ptrkaz@gmail.com>
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -14,12 +15,12 @@ description: Flutter project made to track covid cases.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  json_serializable: 3.3.0
+  json_annotation: ^3.0.1
   get_it: 4.0.1
   rxdart: 0.23.1
   pretty_dio_logger: ^1.1.1
@@ -28,16 +29,16 @@ dependencies:
   retrofit: any
   logger: any  #for logging purpose
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   retrofit_generator: any
-  build_runner: any
+  build_runner: ^1.8.1
+  json_serializable: 3.3.0
+
+
 
 
 

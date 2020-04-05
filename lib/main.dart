@@ -1,8 +1,10 @@
-import 'package:covidcount/global/global_stat_bloc.dart';
-import 'package:covidcount/country_list_screen.dart';
-import 'package:covidcount/global/global_stat_display.dart';
-import 'package:covidcount/global/global_stat_event.dart';
-import 'package:covidcount/global/global_stat_screen.dart';
+import 'package:covid_count/country_list/country_list_bloc.dart';
+import 'package:covid_count/country_list/country_list_event.dart';
+import 'package:covid_count/global/global_stat_bloc.dart';
+import 'package:covid_count/country_list/country_list_screen.dart';
+import 'package:covid_count/global/global_stat_display.dart';
+import 'package:covid_count/global/global_stat_event.dart';
+import 'package:covid_count/global/global_stat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'api/api.dart';
@@ -36,7 +38,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  GlobalStatBloc _bloc;
+  GlobalStatBloc _globalStatBloc;
+  CountryListBloc _countryListBloc;
   int _currentIndex = 0;
 
   List<Widget> _screens = <Widget>[
@@ -47,37 +50,43 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _bloc = GlobalStatBloc();
-    _bloc.add(LoadGlobalStats());
+    _globalStatBloc = GlobalStatBloc();
+//    _countryListBloc = CountryListBloc();
+    _globalStatBloc.add(LoadGlobalStats());
+//    _countryListBloc.add(LoadCountryList());
   }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: _screens.length,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: _selectBottomItem,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.public), title: Text("Global cases")),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              title: Text("Countries"),
-            )
-          ],
-        ),
-        body: BlocProvider<GlobalStatBloc>(
-          create: (_) => _bloc,
-          child: PageView(
-            controller: pageController,
-            onPageChanged: _onPageChanged,
-            children: _screens,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _selectBottomItem,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.public), title: Text("Global cases")),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            title: Text("Countries"),
+          )
+        ],
+      ),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider<GlobalStatBloc>(
+            create: (_) => _globalStatBloc,
           ),
+//            BlocProvider<CountryListBloc>(
+//              create: (_) => _countryListBloc,
+//            )
+        ],
+        child: PageView(
+          controller: pageController,
+          onPageChanged: _onPageChanged,
+          children: _screens,
         ),
       ),
     );
@@ -91,10 +100,15 @@ class _MyHomePageState extends State<MyHomePage> {
   void _selectBottomItem(int index) {
     setState(() {
       _currentIndex = index;
+      pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.decelerate);
     });
+
+
   }
 
   void _onPageChanged(int pageIndex) {
-    _selectBottomItem(pageIndex);
+    setState(() {
+      _currentIndex = pageIndex;
+    });
   }
 }
