@@ -16,8 +16,8 @@ class GlobalStats {
 
   GlobalStats(this.totalCases, this.deaths, this.recovered, this.updatedAt,
       this.activeCases, this.affectedCountries);
-  factory GlobalStats.fromJson(Map<String, dynamic> json) => _$GlobalStatsFromJson(json);
 
+  factory GlobalStats.fromJson(Map<String, dynamic> json) => _$GlobalStatsFromJson(json);
   Map<String, dynamic> toJson() => _$GlobalStatsToJson(this);
 
 }

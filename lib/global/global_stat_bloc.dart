@@ -24,7 +24,7 @@ class GlobalStatBloc extends Bloc<GlobalStatEvent, GlobalStatState> {
   Stream<GlobalStatState> _getGlobalStats() async* {
     try {
       yield GlobalStatLoading();
-      final globalStats = await restClient.getGlobalStats();
+      final globalStats = await restClient.fetchGlobalData();
       yield GlobalStatPopulated(globalStats);
     } catch (e) {
       yield GlobalStatError();

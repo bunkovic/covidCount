@@ -39,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   GlobalStatBloc _globalStatBloc;
-  CountryListBloc _countryListBloc;
+//  CountryListBloc _countryListBloc;
   int _currentIndex = 0;
 
   List<Widget> _screens = <Widget>[
@@ -51,8 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _globalStatBloc = GlobalStatBloc();
-//    _countryListBloc = CountryListBloc();
     _globalStatBloc.add(LoadGlobalStats());
+//    _countryListBloc = CountryListBloc();
 //    _countryListBloc.add(LoadCountryList());
   }
 
