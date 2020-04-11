@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Covid Count',
       theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
-      ),
+//        primarySwatch: Colors.deepOrange.,
+          primaryColor: Colors.black),
       home: MyHomePage(title: 'Covid Count'),
     );
   }
@@ -60,37 +60,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: _selectBottomItem,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.public),
-            title: Text("Global cases"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            title: Text("Countries"),
-          )
-        ],
-      ),
-      body: MultiBlocProvider(
-        providers: [
-          BlocProvider<GlobalStatBloc>(
-            create: (_) => _globalStatBloc,
-          ),
-          BlocProvider<CountryListBloc>(
-            create: (_) => _countryListBloc,
-          )
-        ],
-        child: PageView(
-          controller: pageController,
-          onPageChanged: _onPageChanged,
-          children: _screens,
+        backgroundColor: Colors.white,
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.black87),
         ),
       ),
+      body: MultiBlocProvider(providers: [
+        BlocProvider<GlobalStatBloc>(
+          create: (_) => _globalStatBloc,
+        ),
+        BlocProvider<CountryListBloc>(
+          create: (_) => _countryListBloc,
+        )
+      ], child: GlobalStatScreen()),
     );
   }
 

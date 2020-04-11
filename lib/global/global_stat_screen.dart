@@ -9,7 +9,7 @@ class GlobalStatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return  Center(
         child: BlocBuilder<GlobalStatBloc, GlobalStatState>(
           bloc: BlocProvider.of(context),
           builder: (BuildContext context, GlobalStatState state) {

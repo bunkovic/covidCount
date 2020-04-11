@@ -1,41 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class StatDisplayCard extends StatelessWidget {
   final String _title;
   final num _count;
+  final Color _color;
+  NumberFormat formatter;
+  StatDisplayCard(this._title, this._count, this._color){
+    formatter =_getNumberFormat();
+  }
 
-  StatDisplayCard(this._title, this._count);
 
+   NumberFormat _getNumberFormat(){
+    if (_count > 100 *1000){
+      return NumberFormat.compact();
+    } else {
+      return NumberFormat.decimalPattern();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4,
+      elevation: 1,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Container(
           height: 70,
-          child: Stack(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Positioned(
-                child: Text(
-                  "$_title:",
-                  style: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 20,
-                  ),
+              Text(
+                "$_title:",
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
                 ),
               ),
-              Positioned(
-                bottom: 5,
-                right: 5,
-                child: Text(
-                  "$_count",
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                formatter.format(_count),
+                style: TextStyle(
+                  color: _color,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold
+              ),
               ),
             ],
           ),
@@ -43,4 +54,7 @@ class StatDisplayCard extends StatelessWidget {
       ),
     );
   }
+
+
 }
+

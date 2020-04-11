@@ -11,25 +11,27 @@ class CountryListScreenListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: _countryDataList.length,
-        itemBuilder: (BuildContext context, int index) {
-          var countryData = _countryDataList[index];
-          return Card(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                leading: Image.network(
-                  countryData.countryInfo.flag,
-                width: 30,),
-                title: Text(
-                  "${countryData.country}, active: ${countryData.active}"
+    return Container(
+      child: ListView.builder(
+          itemCount: _countryDataList.length,
+          itemBuilder: (BuildContext context, int index) {
+            var countryData = _countryDataList[index];
+            return Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  leading: Image.network(
+                    countryData.countryInfo.flag,
+                  width: 30,),
+                  title: Text(
+                    "${countryData.country}, active: ${countryData.active}"
+                  ),
+                  subtitle: Text("total: ${countryData.cases}, deaths: ${countryData.deaths}"),
+                  trailing: Text(" + ${countryData.todayCases}"),
                 ),
-                subtitle: Text("total: ${countryData.cases}, deaths: ${countryData.deaths}"),
-                trailing: Text(" + ${countryData.todayCases}"),
               ),
-            ),
-          );
-        });
+            );
+          }),
+    );
   }
 }
