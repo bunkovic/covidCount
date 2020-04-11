@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:covid_count/api/api.dart';
-import 'package:covid_count/global/global_stat_state.dart';
+import 'package:covid_count/global/bloc/global_stat_state.dart';
 import 'package:covid_count/service_locator.dart';
 
 import 'global_stat_event.dart';

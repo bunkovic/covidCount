@@ -1,8 +1,8 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:covid_count/api/api.dart';
-import 'package:covid_count/country_list/country_list_event.dart';
-import 'package:covid_count/country_list/country_list_state.dart';
+import 'package:covid_count/country_list/bloc/country_list_event.dart';
+import 'package:covid_count/country_list/bloc/country_list_state.dart';
 import 'package:covid_count/service_locator.dart';
 
 class CountryListBloc extends Bloc<CountryListEvent, CountryListState>{

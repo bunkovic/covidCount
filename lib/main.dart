@@ -1,9 +1,9 @@
-import 'package:covid_count/country_list/country_list_bloc.dart';
-import 'package:covid_count/country_list/country_list_event.dart';
-import 'package:covid_count/global/global_stat_bloc.dart';
+import 'package:covid_count/country_list/bloc/country_list_bloc.dart';
+import 'package:covid_count/country_list/bloc/country_list_event.dart';
+import 'package:covid_count/global/bloc/global_stat_bloc.dart';
 import 'package:covid_count/country_list/country_list_screen.dart';
 import 'package:covid_count/global/global_stat_display.dart';
-import 'package:covid_count/global/global_stat_event.dart';
+import 'package:covid_count/global/bloc/global_stat_event.dart';
 import 'package:covid_count/global/global_stat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
