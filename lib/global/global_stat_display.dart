@@ -35,10 +35,10 @@ class GlobalStatDisplay extends StatelessWidget {
         crossAxisSpacing: 16,
         crossAxisCount: 2,
         children: <Widget>[
-          StatDisplayCard("CONFIRMED", stats.totalCases, Colors.red),
+          StatDisplayCard("CONFIRMED", stats.totalCases, Colors.red, change: stats.todayCases,),
           StatDisplayCard("ACTIVE", stats.activeCases, Colors.blue),
-          StatDisplayCard("RECOVERED", stats.recovered, Colors.green),
-          StatDisplayCard("DECEASED", stats.deaths, Colors.black54),
+          StatDisplayCard("RECOVERED", stats.recovered, Colors.green,),
+          StatDisplayCard("DECEASED", stats.deaths, Colors.black54, change: stats.todayDeaths),
         ],
       ),
     );

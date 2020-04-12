@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 
 part 'api.g.dart';
 
-@RestApi(baseUrl: "https://corona.lmao.ninja/")
+@RestApi(baseUrl: "https://corona.lmao.ninja/v2")
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 

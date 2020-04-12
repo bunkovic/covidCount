@@ -9,7 +9,7 @@ part of 'api.dart';
 class _RestClient implements RestClient {
   _RestClient(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    this.baseUrl ??= 'https://corona.lmao.ninja/';
+    this.baseUrl ??= 'https://corona.lmao.ninja/v2';
   }
 
   final Dio _dio;

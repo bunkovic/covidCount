@@ -6,7 +6,9 @@ part 'global_stats_entity.g.dart';
 class GlobalStats {
   @JsonKey(name: "cases")
   final int totalCases;
+  final int todayCases;
   final int deaths;
+  final todayDeaths;
   final int recovered;
   @JsonKey(name: "updated")
   final int updatedAt;
@@ -15,9 +17,10 @@ class GlobalStats {
   final int affectedCountries;
 
   GlobalStats(this.totalCases, this.deaths, this.recovered, this.updatedAt,
-      this.activeCases, this.affectedCountries);
+      this.activeCases, this.affectedCountries, this.todayCases, this.todayDeaths);
 
-  factory GlobalStats.fromJson(Map<String, dynamic> json) => _$GlobalStatsFromJson(json);
+  factory GlobalStats.fromJson(Map<String, dynamic> json) =>
+      _$GlobalStatsFromJson(json);
+
   Map<String, dynamic> toJson() => _$GlobalStatsToJson(this);
-
 }
