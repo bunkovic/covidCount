@@ -11,26 +11,10 @@ class GlobalStatDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-//      child: Column(
-//        children: <Widget>[
-//          Row(
-//            crossAxisAlignment: CrossAxisAlignment.start,
-//            children: <Widget>[
-//              Expanded(child:
-//              Expanded(child: StatDisplayCard("Active cases", stats.activeCases)),
-//            ],
-//          ),
-//          Row(
-//            crossAxisAlignment: CrossAxisAlignment.start,
-//            children: <Widget>[
-//              Expanded(child: StatDisplayCard("Deaths", stats.deaths)),
-//              Expanded(child: StatDisplayCard("Recovered", stats.recovered)),
-//            ],
-//          )
-//        ],
-//      ),
+      height: 270,
       child: GridView.count(
-        padding: EdgeInsets.all(32.0),
+        childAspectRatio: 6/4,
+        padding: EdgeInsets.all(24.0),
         mainAxisSpacing: 2.0,
         crossAxisSpacing: 16,
         crossAxisCount: 2,

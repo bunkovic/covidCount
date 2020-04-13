@@ -41,13 +41,12 @@ class StatDisplayCard extends StatelessWidget {
               height: 10,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text(
                   formatter.format(_count),
                   style: TextStyle(
-                      color: _color,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
+                      color: _color, fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 _getChangeIndicator()
               ],
@@ -64,7 +63,10 @@ class StatDisplayCard extends StatelessWidget {
     } else {
       return Text(
         "+ ${formatter.format(change)}",
-        style: TextStyle(color: _color),
+        style: TextStyle(
+          color: _color,
+          fontSize: 10,
+        ),
       );
     }
   }

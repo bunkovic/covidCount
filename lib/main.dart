@@ -59,13 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          widget.title,
-          style: TextStyle(color: Colors.black87),
-        ),
-      ),
+//      appBar: AppBar(
+//        backgroundColor: Colors.white,
+//        title: Text(
+//          widget.title,
+//          style: TextStyle(color: Colors.black87),
+//        ),
+//      ),
       body: MultiBlocProvider(providers: [
         BlocProvider<GlobalStatBloc>(
           create: (_) => _globalStatBloc,
@@ -82,17 +82,18 @@ class _MyHomePageState extends State<MyHomePage> {
     keepPage: true,
   );
 
-  void _selectBottomItem(int index) {
-    setState(() {
-      _currentIndex = index;
-      pageController.animateToPage(index,
-          duration: Duration(milliseconds: 500), curve: Curves.decelerate);
-    });
-  }
-
-  void _onPageChanged(int pageIndex) {
-    setState(() {
-      _currentIndex = pageIndex;
-    });
-  }
+  //TODO decide if we need a bottom navigation or not
+//  void _selectBottomItem(int index) {
+//    setState(() {
+//      _currentIndex = index;
+//      pageController.animateToPage(index,
+//          duration: Duration(milliseconds: 500), curve: Curves.decelerate);
+//    });
+//  }
+//
+//  void _onPageChanged(int pageIndex) {
+//    setState(() {
+//      _currentIndex = pageIndex;
+//    });
+//  }
 }
